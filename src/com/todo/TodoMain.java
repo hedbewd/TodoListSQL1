@@ -67,6 +67,11 @@ public class TodoMain {
 				TodoUtil.loadList(l, "todolist.txt");
 				break;
 				
+			case "find":
+				String want_find = sc.next();
+				TodoUtil.findList(l, want_find);
+				break;
+				
 			case "help":
 				Menu.displaymenu();
 				isList = true;

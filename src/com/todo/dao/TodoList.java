@@ -32,12 +32,23 @@ public class TodoList {
 
 	public void sortByName() {
 		Collections.sort(list, new TodoSortByName());
-
 	}
 
 	public void listAll() {
+		int number = 1;
 		for (TodoItem myitem : list) {
-			System.out.println("[" + myitem.getTitle() + "]   " + myitem.getDesc() + "   " + myitem.getCurrent_date());
+			System.out.println(number + ". " + "[" + myitem.getCategory() + "]   " + myitem.getTitle() + "  -  " + myitem.getDesc() + "  -  " + myitem.getDue_date() + "  -  " + myitem.getCurrent_date());
+			number++;
+		}
+	}
+	
+	public void one_list(int want_number) {
+		int number = 1;
+		for (TodoItem myitem : list) {
+			if (want_number == number) {
+				System.out.println(number + ". " + "[" + myitem.getCategory() + "]   " + myitem.getTitle() + "  -  " + myitem.getDesc() + "  -  " + myitem.getDue_date() + "  -  " + myitem.getCurrent_date());
+			}
+			number++;
 		}
 	}
 	
