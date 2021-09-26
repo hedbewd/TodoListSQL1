@@ -56,9 +56,11 @@ public class TodoUtil {
 				}
 				number++;
 			}
+			System.out.println("항목이 삭제되었습니다!!");
 		}
-		
-		System.out.println("항목이 삭제되었습니다!!");
+		else {
+			System.out.println("삭제 명령이 취소되었습니다!!");
+		}
 	}
 
 
@@ -123,6 +125,26 @@ public class TodoUtil {
 		}
 	}
 	
+	public static void listCate(TodoList l) {
+		
+		Set<String> set1= new HashSet<String>();
+		
+		for (TodoItem item : l.getList()) {
+			set1.add(item.getCategory());
+		}
+		
+		int number = 0;
+		for (String str : set1) {
+			if (number == set1.size()) {
+				System.out.println(str);
+			}
+			System.out.print(str + " / ");
+			number++;
+		}
+		
+		System.out.println("총 " + set1.size() + "개의 카테고리가 등록되어 있습니다.");
+	}
+	
 	public static void saveList(TodoList l, String filename) {
 		try {
 			Writer w = new FileWriter("todolist.txt");
@@ -181,5 +203,21 @@ public class TodoUtil {
 		
 		System.out.println("총 " + totalNumber + "개의 항목을 찾았습니다!");
 		
+	}
+	
+	public static void findCate(TodoList l, String want_find) {
+		
+		int number = 1;
+		int totalNumber = 0;
+		
+		for (TodoItem item : l.getList()) {
+			if (item.getCategory().contains(want_find)) {
+				l.one_list(number);
+				totalNumber++;
+			}
+			number++;
+		}
+		
+		System.out.println("총 " + totalNumber + "개의 항목을 찾았습니다!");
 	}
 }
