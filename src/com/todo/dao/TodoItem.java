@@ -4,6 +4,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 public class TodoItem {
+	private int id;
     private String title;
     private String desc;
     private String current_date;
@@ -29,6 +30,14 @@ public class TodoItem {
         this.current_date = current_date;
     }
     
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
     public String getTitle() {
         return title;
     }
@@ -72,4 +81,8 @@ public class TodoItem {
 	public String toSaveString() {
     	return category + "##" + title + "##" + desc + "##" + due_date + "##" + current_date + "\n";
     }
+	
+	public String toString() {
+		return "[" + category + "] " + title + " - " + desc + " - " + due_date + " - " + current_date;
+	}
 }
