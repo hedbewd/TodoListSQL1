@@ -11,6 +11,7 @@ public class TodoUtil {
 	public static void createItem(TodoList list) {
 		
 		String title, desc, category, due_date;
+		int priority, importance;
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("[항목 추가]\n" + "제목 > ");
@@ -102,6 +103,24 @@ public class TodoUtil {
 		System.out.printf("\n총 %d개의 카테고리가 등록되어 있습니다!\n", count);
 	}
 	
+	public static void listComp(TodoList l) {
+		for (TodoItem t : l.getCompletedList()) {
+			System.out.println(t.toString());
+		}
+	}
+	
+	public static void listPriority(TodoList l, int priority_num) {
+		for (TodoItem t : l.getPriorityList(priority_num)) {
+			System.out.println(t.toString());
+		}
+	}
+	
+	public static void listImportance(TodoList l, int importance_num) {
+		for (TodoItem t : l.getImportanceList(importance_num)) {
+			System.out.println(t.toString());
+		}
+	}
+	
 	public static void saveList(TodoList l, String filename) {
 		try {
 			Writer w = new FileWriter("todolist.txt");
@@ -159,5 +178,20 @@ public class TodoUtil {
 			count++;
 		}
 		System.out.printf("\n총 %d개의 항목을 찾았습니다.\n", count);
+	}
+	
+	public static void checkComplete(TodoList l, int num) {
+		if (l.check_completed(num) > 0)
+			System.out.println("완료 체크되었습니다!");
+	}
+	
+	public static void setPriority(TodoList l, int num, int priority_num) {
+		if (l.set_priority(priority_num, num) > 0)
+			System.out.println("우선순위가 설정되었습니다!");
+	}
+	
+	public static void setImportance(TodoList l, int num, int importance_num) {
+		if (l.set_importance(importance_num, num) > 0)
+			System.out.println("중요도가 설정되었습니다!");
 	}
 }

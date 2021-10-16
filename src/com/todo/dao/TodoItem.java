@@ -10,6 +10,7 @@ public class TodoItem {
     private String current_date;
     private String category;
     private String due_date;
+    private int is_completed;
 
 	public TodoItem(String category, String title, String desc, String due_date){
 		this.category = category;
@@ -76,6 +77,14 @@ public class TodoItem {
 
 	public void setDue_date(String due_date) {
 		this.due_date = due_date;
+	}
+	
+	public int getIs_completed() {
+		return is_completed;
+	}
+	
+	public void setIs_completed() {
+		this.is_completed = is_completed;
 	}
 
 	public String toSaveString() {

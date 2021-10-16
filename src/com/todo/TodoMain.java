@@ -16,6 +16,7 @@ public class TodoMain {
 		boolean isList = false;
 		boolean quit = false;
 		String want_find;
+		int num, priority_num, importance_num;
 		
 		//TodoUtil.loadList(l, "todolist.txt");
 		Menu.displaymenu();
@@ -84,14 +85,45 @@ public class TodoMain {
 				TodoUtil.findCateList(l, cate);
 				break;
 				
+			case "comp":
+				num = sc.nextInt();
+				TodoUtil.checkComplete(l, num);
+				break;
+			
+			case "ls_comp":
+				TodoUtil.listComp(l);
+				break;
+				
+			case "priority":
+				num = sc.nextInt();
+				priority_num = sc.nextInt();
+				TodoUtil.setPriority(l, num, priority_num);
+				break;
+				
+			case "ls_priority":
+				priority_num = sc.nextInt();
+				TodoUtil.listPriority(l, priority_num);
+				break;
+				
+			case "importance":
+				num = sc.nextInt();
+				importance_num = sc.nextInt();
+				TodoUtil.setImportance(l, num, importance_num);
+				break;
+				
+			case "ls_importance":
+				importance_num = sc.nextInt();
+				TodoUtil.listImportance(l, importance_num);
+				break;
+				
 			case "help":
 				Menu.displaymenu();
 				isList = true;
 				break;
 
 			case "exit":
-				System.out.println("TodoList App의 모든 데이터가 저장되었습니다!");
-				TodoUtil.saveList(l, "todolist.txt");
+				System.out.println("TodoList App의 모든 데이터가 데이터베이스에 저장되었습니다!");
+				//TodoUtil.saveList(l, "todolist.txt");
 				quit = true;
 				break;
 
